@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Golden Glass</string>
+    <string name="widget_description">Golden Glass clock with battery, free space and next wallpaper button</string>
+    <string name="widget_next">Next wallpaper</string>
+</resources>

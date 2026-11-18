@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Golden Glass</string>
+    <string name="widget_description">Golden Glass ঘড়ি — ব্যাটারি, খালি জায়গা ও পরের ওয়ালপেপার বাটনসহ</string>
+    <string name="widget_next">পরের ওয়ালপেপার</string>
+</resources>

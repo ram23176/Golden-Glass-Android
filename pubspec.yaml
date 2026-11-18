@@ -1,0 +1,29 @@
+name: golden_glass
+description: "Golden Glass - Android theme, wallpaper and widget app"
+publish_to: 'none'
+
+# version: ভার্সন+বিল্ড নম্বর। নতুন APK বানালে বিল্ড নম্বর (+ এর পরের সংখ্যা) বাড়াতে হবে,
+# নইলে ফোনে পুরনোটার উপর আপডেট হবে না। lib/core/app_info.dart-এর appVersion-ও মিলিয়ে রাখুন।
+version: 1.1.0+2
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  file_picker: ^13.4.0
+  path_provider: ^2.1.6
+  shared_preferences: ^2.5.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo.png
+    - assets/wallpapers/radha_krishna.jpg
+    - assets/wallpapers/hanuman.jpg

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Golden Glass হোম স্ক্রিন উইজেট (RemoteViews — শুধু অনুমোদিত View ব্যবহার করা হয়েছে) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/w_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextClock
+                android:id="@+id/w_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:format12Hour="h:mm"
+                android:format24Hour="HH:mm"
+                android:includeFontPadding="false"
+                android:textColor="#FFFFB800"
+                android:textSize="44sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/w_next"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/widget_button_bg"
+                android:contentDescription="@string/widget_next"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_skip_next" />
+        </LinearLayout>
+
+        <TextClock
+            android:id="@+id/w_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:format12Hour="EEEE, d MMMM"
+            android:format24Hour="EEEE, d MMMM"
+            android:textColor="#E6FFF7E8"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/w_accent_bar"
+            android:layout_width="48dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#FFFFB800"
+            android:importantForAccessibility="no" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/w_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#CCFFF7E8"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/w_storage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textColor="#CCFFF7E8"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
