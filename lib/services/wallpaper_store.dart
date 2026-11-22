@@ -29,8 +29,9 @@ class WallpaperStore {
 
   /// assets/wallpapers/ -এর ছবি: ফাইল → (নামের i18n key, ফোল্ডার)
   static const bundled = {
-    'radha_krishna.jpg': ('wp_radha_krishna', 'radha_krishna'),
-    'hanuman.jpg': ('wp_hanuman', 'hanuman'),
+    'radha_krishna_1.jpg': ('wp_radha_krishna_1', 'radha_krishna'),
+    'radha_krishna_2.jpg': ('wp_radha_krishna_2', 'radha_krishna'),
+    'radha_krishna_3.jpg': ('wp_radha_krishna_3', 'radha_krishna'),
   };
   static const _imageExt = {'.jpg', '.jpeg', '.png', '.webp', '.bmp', '.gif', '.heic', '.heif'};
 
@@ -45,6 +46,10 @@ class WallpaperStore {
       await Directory('${_mineDir!.path}/$f').create();
     }
     await _migrateLooseFiles();
+    // আগের ভার্সনের যে ছবি আর অ্যাপের সাথে আসে না, সেগুলোর কপি মুছে জায়গা খালি করা
+    await for (final e in _bundledDir!.list()) {
+      if (e is File && !bundled.containsKey(_name(e.path))) await e.delete();
+    }
     if (rootOverride != null) return; // টেস্টে asset নেই
     for (final name in bundled.keys) {
       final f = File('${_bundledDir!.path}/$name');

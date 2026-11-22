@@ -74,7 +74,7 @@ void main() {
 
     test('wallpaper names', () {
       I18n.lang = 'en';
-      expect(wallpaperName('hanuman.jpg', true), 'Hanuman — Heroic Visions');
+      expect(wallpaperName('radha_krishna_3.jpg', true), 'Radha Krishna — Fire & Water');
       expect(wallpaperName('1731900000000_My_Trip.jpg', false), 'My Trip');
     });
   });
