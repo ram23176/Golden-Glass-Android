@@ -14,7 +14,10 @@ import 'shell.dart';
 import 'theme_editor_page.dart';
 
 class ThemesPage extends StatelessWidget {
-  const ThemesPage({super.key});
+  const ThemesPage({super.key, this.onOpenWallpapers});
+
+  /// দেবতার থিমে চাপ দিলে ওয়ালপেপার ট্যাবে (সেই দেবতার ফোল্ডারে) নিয়ে যায়
+  final VoidCallback? onOpenWallpapers;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class ThemesPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 4, right: 4, bottom: 10),
           child: Text(t('th_deity_sub'), style: TextStyle(color: p.textMuted, fontSize: 12.5)),
         ),
-        _ThemeGrid(themes: deityThemes),
+        _ThemeGrid(themes: deityThemes, onOpenWallpapers: onOpenWallpapers),
         SectionTitle(t('th_builtin')),
         _ThemeGrid(themes: colorThemes),
         SectionTitle(
@@ -114,9 +117,10 @@ Future<void> exportTheme(BuildContext context, ThemeDef theme) async {
 }
 
 class _ThemeGrid extends StatelessWidget {
-  const _ThemeGrid({required this.themes});
+  const _ThemeGrid({required this.themes, this.onOpenWallpapers});
 
   final List<ThemeDef> themes;
+  final VoidCallback? onOpenWallpapers;
 
   @override
   Widget build(BuildContext context) {
@@ -130,15 +134,16 @@ class _ThemeGrid extends StatelessWidget {
         childAspectRatio: 1.05,
       ),
       itemCount: themes.length,
-      itemBuilder: (context, i) => _ThemeCard(theme: themes[i]),
+      itemBuilder: (context, i) => _ThemeCard(theme: themes[i], onOpenWallpapers: onOpenWallpapers),
     );
   }
 }
 
 class _ThemeCard extends StatelessWidget {
-  const _ThemeCard({required this.theme});
+  const _ThemeCard({required this.theme, this.onOpenWallpapers});
 
   final ThemeDef theme;
+  final VoidCallback? onOpenWallpapers;
 
   void options(BuildContext context) {
     final app = context.appRead;
@@ -213,9 +218,10 @@ class _ThemeCard extends StatelessWidget {
       active: active,
       padding: const EdgeInsets.all(10),
       onTap: () {
-        app.applyTheme(theme.id);
+        app.applyTheme(theme.id); // দেবতার থিম হলে ওয়ালপেপার ফিল্টারও সেই ফোল্ডারে যায়
         if (theme.deity != null) {
           showToast(context, tf('th_deity_applied', {'f': app.themeName(theme), 'n': '${deityPics.length}'}));
+          onOpenWallpapers?.call();
         }
       },
       onLongPress: () => options(context),

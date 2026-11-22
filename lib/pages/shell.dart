@@ -46,7 +46,7 @@ class _HomeShellState extends State<HomeShell> with WidgetsBindingObserver {
     final pages = [
       HomePage(onNavigate: go),
       const WallpaperPage(),
-      const ThemesPage(),
+      ThemesPage(onOpenWallpapers: () => go(1)),
       const SystemPage(),
       const MorePage(),
     ];
